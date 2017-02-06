@@ -1,4 +1,4 @@
-package java.com.examples.selenium;
+package com.examples.selenium;
 
 /**
  * Hello world!

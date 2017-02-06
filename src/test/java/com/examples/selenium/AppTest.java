@@ -14,10 +14,12 @@ public class AppTest{
     @BeforeTest
     public void setUp(){
         System.setProperty("webdriver.chrome.driver","./src/test/resources/chrome/driver/chromedriver.exe");
-        ChromeOptions profile = new ChromeOptions();
+        /*ChromeOptions profile = new ChromeOptions();
         profile.addArguments("user-data-dir=C:\\Users\\New\\SeleniumAdvanced\\src\\test\\resources\\Chrome\\profile\\");
 
-        driver = new ChromeDriver(profile);
+        driver = new ChromeDriver(profile);*/
+
+        driver = new ChromeDriver();
         driver.get("https://github.com/kammavar/");
     }
 

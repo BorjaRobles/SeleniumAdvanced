@@ -29,12 +29,22 @@ public class AppTest{
     }
 
     @Test
-    public void validateCookie() throws IOException{
-        String actualTest = this.getClass().getName()+"."+  "validateCookie";
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("target/screenshots/"+actualTest+".png"));
-        String timezone = driver.manage().getCookieNamed("tz").getValue();
-        Assert.assertTrue(timezone.contains("Berlin"));
+    public void validateCookie(){
+        try{
+            String actualTest = this.getClass().getName()+"."+  "validateCookie";
+            File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(scrFile, new File("target/screenshots/"+actualTest+".png"));
+            String timezone = driver.manage().getCookieNamed("tz").getValue();
+            Assert.assertTrue(timezone.contains("Berlin"));
+        }
+        catch(IOException e){
+            System.out.println("Problem in file handling. Verify the screenshots file process.");
+            e.printStackTrace();
+        }
+        finally{
+            driver.quit();
+        }
+
     }
 
     @AfterTest

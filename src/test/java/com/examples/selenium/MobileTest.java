@@ -24,25 +24,43 @@ public class MobileTest {
         AppiumDriver<MobileElement> driver;
 
         @BeforeTest
-        public void setUp() throws MalformedURLException{
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "LENNY");
-                capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, MobileBrowserType.CHROME);
-                capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
-                //you are free to set additional capabilities
-                driver = new AndroidDriver<MobileElement>( new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        public void setUp(){
+                try{
+                        DesiredCapabilities capabilities = new DesiredCapabilities();
+                        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "LENNY");
+                        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, MobileBrowserType.CHROME);
+                        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
+                        //you are free to set additional capabilities
+                        driver = new AndroidDriver<MobileElement>( new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
-                driver.get("https://github.com/kammavar/");
-                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                        driver.get("https://github.com/kammavar/");
+                        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                }
+                catch(MalformedURLException e){
+                        System.out.println("Invalid URL string specified for driver object. Make sure ip and port information are correct.");
+                }
+                finally{
+                        driver.quit();
+                }
         }
 
         @Test
-        public void validateCookie() throws IOException {
-                String actualTest = this.getClass().getName()+"."+  "validateCookie";
-                File scrFile = driver.getScreenshotAs(OutputType.FILE);
-                FileUtils.copyFile(scrFile, new File("target/screenshots/"+actualTest+".png"));
-                String timezone = driver.manage().getCookieNamed("tz").getValue();
-                Assert.assertTrue(timezone.contains("CET"));
+        public void validateCookie() {
+                try{
+                        String actualTest = this.getClass().getName()+"."+  "validateCookie";
+                        File scrFile = driver.getScreenshotAs(OutputType.FILE);
+                        FileUtils.copyFile(scrFile, new File("target/screenshots/"+actualTest+".png"));
+                        String timezone = driver.manage().getCookieNamed("tz").getValue();
+                        Assert.assertTrue(timezone.contains("CET"));
+                }
+                catch(IOException e){
+                        System.out.println("Problem taking screenshots. ");
+                        e.printStackTrace();
+                }
+                finally{
+                        driver.quit();
+                }
+
         }
 
         @AfterTest

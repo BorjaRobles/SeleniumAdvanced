@@ -32,9 +32,9 @@ public class AppTest{
     }
 
     @Test
-    public void validateCookie(){
+    public void validateCookieInPC(){
         try{
-            String actualTest = this.getClass().getName()+"."+  "validateCookie";
+            String actualTest = this.getClass().getName()+"."+  "validateCookieInPC";
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(scrFile, new File("target/screenshots/"+actualTest+".png"));
             String timezone = driver.manage().getCookieNamed("tz").getValue();

@@ -45,9 +45,9 @@ public class MobileTest {
         }
 
         @Test
-        public void validateCookie() {
+        public void validateCookieInMobile() {
                 try{
-                        String actualTest = this.getClass().getName()+"."+  "validateCookie";
+                        String actualTest = this.getClass().getName()+"."+  "validateCookieInMobile";
                         File scrFile = driver.getScreenshotAs(OutputType.FILE);
                         FileUtils.copyFile(scrFile, new File("target/screenshots/"+actualTest+".png"));
                         String timezone = driver.manage().getCookieNamed("tz").getValue();

@@ -54,8 +54,8 @@ public class TestNGListener implements ITestListener {
     }
 
     public void updateJenkinsStatus(ITestResult result, String status){
-            out.println("{\"method\":\""+ result.getName() +"\", \"status\":\""+ status +"\", "
-                    + "\"classes\":\""+ result.getTestClass() +"\", \"description\":\""+ result.getTestName() +"\"}");
+            out.println("{\"method\":\"["+ result.getName() +"]\", \"status\":\"["+ status +"]\", "
+                    + "\"classes\":\""+ result.getTestClass() +"\", \"description\":\"["+ result.getTestName() +"]\"}");
     }
 
 }

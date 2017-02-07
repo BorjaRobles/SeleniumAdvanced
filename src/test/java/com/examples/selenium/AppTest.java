@@ -1,12 +1,17 @@
 package com.examples.selenium;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.io.File;
+import java.io.IOException;
 
 public class AppTest{
     private WebDriver driver;
@@ -24,9 +29,11 @@ public class AppTest{
     }
 
     @Test
-    public void validateCookie(){
+    public void validateCookie() throws IOException{
+        String actualTest = this.getClass().getName()+"."+  "validateCookie";
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("target/screenshots/"+actualTest+".png"));
         String timezone = driver.manage().getCookieNamed("tz").getValue();
-        System.out.println(timezone);
         Assert.assertTrue(timezone.contains("Berlin"));
     }
 

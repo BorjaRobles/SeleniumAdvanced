@@ -40,7 +40,8 @@ public class TestNGListener implements ITestListener {
 
     public void onStart(ITestContext context) {
         try{
-            this.out = new PrintWriter(new BufferedWriter(new FileWriter("target/teststream.txt", true)));
+
+            this.out = new PrintWriter(new BufferedWriter(new FileWriter("target/teststream.txt", false)));
         }
         catch (IOException e) {
             e.printStackTrace();

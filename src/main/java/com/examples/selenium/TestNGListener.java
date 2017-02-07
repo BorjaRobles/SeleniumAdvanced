@@ -19,17 +19,17 @@ public class TestNGListener implements ITestListener {
 
 
     public void onTestSuccess(ITestResult result) {
-        this.updateJenkinsStatus(result, "Success");
+        this.updateJenkinsStatus(result, "sucesso");
     }
 
 
     public void onTestFailure(ITestResult result) {
-        this.updateJenkinsStatus(result, "Failed");
+        this.updateJenkinsStatus(result, "falha");
     }
 
 
     public void onTestSkipped(ITestResult result) {
-        this.updateJenkinsStatus(result, "Skipped");
+        this.updateJenkinsStatus(result, "skiped");
     }
 
 

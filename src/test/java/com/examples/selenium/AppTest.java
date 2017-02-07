@@ -6,6 +6,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,8 +14,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.File;
 import java.io.IOException;
 
+@Listeners(TestNGListener.class)
 public class AppTest{
     private WebDriver driver;
+
 
     @BeforeTest
     public void setUp(){

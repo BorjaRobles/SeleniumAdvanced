@@ -12,6 +12,7 @@ import io.appium.java_client.MobileElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -20,6 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+@Listeners(TestNGListener.class)
 public class MobileTest {
         AppiumDriver<MobileElement> driver;
 

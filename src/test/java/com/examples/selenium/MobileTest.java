@@ -38,9 +38,7 @@ public class MobileTest {
                 }
                 catch(MalformedURLException e){
                         System.out.println("Invalid URL string specified for driver object. Make sure ip and port information are correct.");
-                }
-                finally{
-                        driver.quit();
+                        e.printStackTrace();
                 }
         }
 
@@ -56,9 +54,6 @@ public class MobileTest {
                 catch(IOException e){
                         System.out.println("Problem taking screenshots. ");
                         e.printStackTrace();
-                }
-                finally{
-                        driver.quit();
                 }
 
         }

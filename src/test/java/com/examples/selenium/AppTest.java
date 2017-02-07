@@ -41,9 +41,6 @@ public class AppTest{
             System.out.println("Problem in file handling. Verify the screenshots file process.");
             e.printStackTrace();
         }
-        finally{
-            driver.quit();
-        }
 
     }
 

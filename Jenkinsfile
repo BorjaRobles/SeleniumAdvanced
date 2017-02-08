@@ -17,9 +17,9 @@ pipeline {
             }
         }
 
-        stage ('Build') {
+        stage ('test') {
                     steps {
-                       "cmd /c mvn test".execute()
+                       bat "mvn test"
                     }
         }
 

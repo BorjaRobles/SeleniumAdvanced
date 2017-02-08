@@ -13,8 +13,15 @@ pipeline {
 
         stage ('Build') {
             steps {
-               println("Initialize")
+               println("Build")
             }
         }
+
+        stage ('Build') {
+                    steps {
+                       "cmd /c mvn test".execute()
+                    }
+        }
+
     }
 }

@@ -19,7 +19,9 @@ pipeline {
 
         stage ('test') {
                     steps {
-                       bat "mvn test"
+		       sh "docker run -d -P --name selenium-hub selenium/hub"
+		       sh "docker run -d --link selenium-hub:hub selenium/node-chrome"
+                       sh "mvn test"
                     }
         }
 
